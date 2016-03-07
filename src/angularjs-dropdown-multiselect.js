@@ -237,8 +237,6 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
                 };
 
                 $scope.deselectAll = function (sendEvent) {
-                    debugger;
-
                     sendEvent = sendEvent || true;
 
                     if (sendEvent) {
@@ -250,7 +248,6 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
                         clearObject($scope.selectedModel);
                     } else {
                         debugger;
-                        // 
                         angular.forEach($scope.options, function (value) {
                             debugger;
                             // $scope.setSelectedItem(value[$scope.settings.idProp], true);
@@ -259,19 +256,17 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
                                 // $scope.setSelectedItem(value[$scope.settings.idProp], true);
                                 // clearObject($scope.selectedModel);
                                 // clearObject(value);
+                                
+                                var findObj = {}
+                                findObj[$scope.settings.idProp] = value.id
 
                                 $scope.selectedModel.splice(_.findIndex($scope.selectedModel, findObj), 1);
-                                $scope.externalEvents.onItemDeselect(findObj);
+                                // $scope.externalEvents.onItemDeselect(findObj);
 
                             }
                         });
-
-
-                        if(value[$scope.settings.displayProp].toLowerCase().indexOf($scope.searchFilter) >= 0 ) {
-                            $scope.setSelectedItem(value[$scope.settings.idProp], true);
-                        }
                          
-                        $scope.selectedModel.splice(0, $scope.selectedModel.length);
+                        // $scope.selectedModel.splice(0, $scope.selectedModel.length);
                     }
                 };
 
