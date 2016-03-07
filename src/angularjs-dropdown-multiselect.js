@@ -231,7 +231,7 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
                     angular.forEach($scope.options, function (value) {
                         debugger;
                         // $scope.setSelectedItem(value[$scope.settings.idProp], true);
-                        if(value[$scope.settings.nameProp].toLowerCase().indexOf($scope.searchFilter) >= 0 ) {
+                        if(value[$scope.settings.displayProp].toLowerCase().indexOf($scope.searchFilter) >= 0 ) {
                             $scope.setSelectedItem(value[$scope.settings.idProp], true);
                         }
                     });
