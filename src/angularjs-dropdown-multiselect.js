@@ -250,6 +250,27 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
                         clearObject($scope.selectedModel);
                     } else {
                         debugger;
+                        // 
+                        angular.forEach($scope.options, function (value) {
+                            debugger;
+                            // $scope.setSelectedItem(value[$scope.settings.idProp], true);
+                            if(value[$scope.settings.displayProp].toLowerCase().indexOf($scope.searchFilter) >= 0 ) {
+                                debugger;
+                                // $scope.setSelectedItem(value[$scope.settings.idProp], true);
+                                // clearObject($scope.selectedModel);
+                                // clearObject(value);
+
+                                $scope.selectedModel.splice(_.findIndex($scope.selectedModel, findObj), 1);
+                                $scope.externalEvents.onItemDeselect(findObj);
+
+                            }
+                        });
+
+
+                        if(value[$scope.settings.displayProp].toLowerCase().indexOf($scope.searchFilter) >= 0 ) {
+                            $scope.setSelectedItem(value[$scope.settings.idProp], true);
+                        }
+                         
                         $scope.selectedModel.splice(0, $scope.selectedModel.length);
                     }
                 };
