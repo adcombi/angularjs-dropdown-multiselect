@@ -247,24 +247,29 @@ directiveModule.directive('ngDropdownMultiselect', ['$filter', '$document', '$co
                         debugger;
                         clearObject($scope.selectedModel);
                     } else {
-                        debugger;
+                        
                         angular.forEach($scope.options, function (value) {
-                            debugger;
                             // $scope.setSelectedItem(value[$scope.settings.idProp], true);
                             if(value[$scope.settings.displayProp].toLowerCase().indexOf($scope.searchFilter) >= 0 ) {
-                                debugger;
+                                // debugger;
                                 // $scope.setSelectedItem(value[$scope.settings.idProp], true);
                                 // clearObject($scope.selectedModel);
                                 // clearObject(value);
-                                
-                                var findObj = {}
-                                findObj[$scope.settings.idProp] = value.id
+                                var removeObj = {};
+                                removeObj[$scope.settings.idProp] = value.id;
 
-                                $scope.selectedModel.splice(_.findIndex($scope.selectedModel, findObj), 1);
+                                // if ($scope.settings.externalIdProp === '') {
+                                //     findObj[$scope.settings.idProp] = value.id;
+                                // } else {
+                                //     findObj[$scope.settings.externalIdProp] = value.id;
+                                // }
+
+                                $scope.selectedModel.splice(_.findIndex($scope.selectedModel, removeObj), 1);
                                 // $scope.externalEvents.onItemDeselect(findObj);
 
                             }
                         });
+                        debugger;
                          
                         // $scope.selectedModel.splice(0, $scope.selectedModel.length);
                     }
